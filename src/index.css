@@ -1,0 +1,142 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Roboto:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------------------
+   THEME TOKENS — Day / Night mode
+   Dark ("night") is the default (no class on <html>). Adding class="light"
+   to <html> (done by ThemeContext.jsx) swaps every value below into the
+   "day" palette. Every Tailwind color in tailwind.config.js reads from these
+   variables, so the whole site re-themes instantly with one class toggle.
+   Values are "R G B" triplets (no commas) so Tailwind's opacity modifiers
+   (e.g. bg-bg/80, text-cream/60) keep working via rgb(var(--x) / <alpha-value>).
+--------------------------------------------------------------------------- */
+:root {
+  --color-bg: 11 10 9; /* page background */
+  --color-panel: 21 19 17; /* raised card background */
+  --color-panel2: 28 25 23; /* input / pill background */
+  --color-cream: 245 241 234; /* primary foreground / text */
+  --color-muted: 154 148 144; /* secondary text */
+  --color-line: 255 255 255; /* hairline borders (used at low opacity) */
+  --shadow-strength: 0.45;
+}
+
+:root.light {
+  --color-bg: 255 255 255;
+  --color-panel: 247 245 241;
+  --color-panel2: 238 235 229;
+  --color-cream: 21 19 17;
+  --color-muted: 104 98 92;
+  --color-line: 0 0 0;
+  --shadow-strength: 0.08;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: rgb(var(--color-bg));
+  color: rgb(var(--color-cream));
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition:
+    background-color 0.4s ease,
+    color 0.4s ease;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-display {
+  font-family: "Poppins", sans-serif;
+}
+
+.hero-word--bold {
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.hero-word--italic {
+  font-family: "Georgia", "Times New Roman", serif;
+  font-style: italic;
+  font-weight: 600;
+}
+
+::selection {
+  background-color: #e8792c;
+  color: rgb(var(--color-bg));
+}
+
+/* visible keyboard focus */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+  outline: 2px solid #e8792c;
+  outline-offset: 3px;
+}
+
+.container-px {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
+@media (min-width: 1024px) {
+  .container-px {
+    padding-left: 3rem;
+    padding-right: 3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* horizontal scroll snap for rail-style rows */
+.snap-row {
+  scroll-snap-type: x mandatory;
+}
+.snap-row > * {
+  scroll-snap-align: start;
+}
+.snap-row::-webkit-scrollbar {
+  display: none;
+}
+.snap-row {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* 3D tilt-card support — see components/TiltCard.jsx */
+.tilt-wrap {
+  perspective: 1200px;
+}
+.tilt-card {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+.tilt-shine {
+  background: radial-gradient(
+    circle at var(--mx, 50%) var(--my, 50%),
+    rgb(255 255 255 / 0.14),
+    transparent 55%
+  );
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* soft page-level shadow that adapts to theme strength */
+.theme-shadow {
+  box-shadow: 0 20px 60px -20px rgb(0 0 0 / var(--shadow-strength));
+}
