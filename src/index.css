@@ -140,3 +140,86 @@ input:focus-visible {
 .theme-shadow {
   box-shadow: 0 20px 60px -20px rgb(0 0 0 / var(--shadow-strength));
 }
+
+/* ==========================================================================
+   CINEMATIC HERO — KEYFRAME ANIMATIONS
+   All animations use GPU-accelerated properties only (transform, opacity).
+   The prefers-reduced-motion block at line ~97 silences all of them.
+   ========================================================================== */
+
+/* Dust particles drift upward */
+@keyframes dustDrift {
+  0%   { transform: translateY(0px) translateX(0px);  opacity: 0; }
+  6%   { opacity: 1; }
+  94%  { opacity: 1; }
+  100% { transform: translateY(-110vh) translateX(28px); opacity: 0; }
+}
+
+/* Bokeh circles gently oscillate */
+@keyframes bokehDrift {
+  from { transform: translate(0px,   0px) scale(1); }
+  to   { transform: translate(18px, -24px) scale(1.09); }
+}
+
+/* Ambient glow behind the speaker breathes */
+@keyframes glowPulse {
+  from { opacity: 0.55; transform: scale(0.97); }
+  to   { opacity: 0.95; transform: scale(1.05); }
+}
+
+/* Spotlight beam 1 — slow pendulum sway */
+@keyframes spotlightSway {
+  from { transform: rotate(-2.5deg); }
+  to   { transform: rotate(2.5deg);  }
+}
+
+/* Spotlight beam 2 — slightly different rhythm */
+@keyframes spotlightSway2 {
+  from { transform: rotate(2deg);  }
+  to   { transform: rotate(-3deg); }
+}
+
+/* Scroll indicator dot travels down and fades */
+@keyframes scrollPulse {
+  0%   { transform: translateY(0);    opacity: 0.9; }
+  60%  { transform: translateY(10px); opacity: 0.2; }
+  100% { transform: translateY(0);    opacity: 0;   }
+}
+
+/* ==========================================================================
+   HERO CTA BUTTON — light-sweep hover effect
+   ========================================================================== */
+
+.hero-cta-btn {
+  position: relative;
+  overflow: hidden;
+  transition:
+    box-shadow 0.35s ease,
+    transform   0.22s ease;
+}
+
+.hero-cta-btn:hover {
+  box-shadow:
+    0 10px 38px -8px rgba(232, 121, 44, 0.55),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
+}
+
+/* The sweeping gleam that crosses the button on hover */
+.hero-cta-sweep {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent           35%,
+    rgba(255,255,255,0.22) 50%,
+    transparent           65%
+  );
+  transform: translateX(-130%);
+  transition: transform 0.55s ease;
+  pointer-events: none;
+}
+
+.hero-cta-btn:hover .hero-cta-sweep {
+  transform: translateX(130%);
+}

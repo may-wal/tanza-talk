@@ -6,7 +6,7 @@
 // =====================================================================================
 
 import logoImage from "../images/Tanza Logo WT.png";
-import heroimg from "../images/heroimg.png";
+import heroimg from "../images/speaker.png";
 
 export const nav = {
   logo: {
