@@ -9,11 +9,22 @@ import TiltCard from "./TiltCard";
 // LatestConversations
 // A seamless horizontally looping rail of episode cards with a continuous
 // marquee-style motion.
+//
+// Only real, channel-verified uploads are listed — see the sourcing note on
+// `conversations` in data/content.js — so the rail is tripled rather than
+// doubled to keep the loop full at wide viewports. Each card's artwork is
+// that video's real YouTube thumbnail, and the whole card links straight to
+// the video.
 // ---------------------------------------------------------------------------
 export default function LatestConversations() {
   const [isPaused, setIsPaused] = useState(false);
+  // Tripled, then translated -33.333% below, so the seam lands mid-loop.
   const duplicatedEpisodes = useMemo(
-    () => [...conversations.episodes, ...conversations.episodes],
+    () => [
+      ...conversations.episodes,
+      ...conversations.episodes,
+      ...conversations.episodes,
+    ],
     [],
   );
 
@@ -22,7 +33,7 @@ export default function LatestConversations() {
       <style>{`
         @keyframes marquee {
           from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
+          to { transform: translateX(-33.3333%); }
         }
       `}</style>
 
@@ -31,7 +42,7 @@ export default function LatestConversations() {
           {conversations.eyebrow}
         </h2>
         <Link
-          to="/shows"
+          to="/media"
           className="hidden sm:inline-flex items-center gap-1 text-sm text-cream/70 hover:text-accent transition-colors group"
         >
           {conversations.viewAll}
@@ -60,14 +71,20 @@ export default function LatestConversations() {
               key={`${ep.title}-${i}`}
               delay={(i % conversations.episodes.length) * 0.03}
               y={16}
-              className="shrink-0 w-[220px] sm:w-[240px]"
+              className="shrink-0 w-[280px] sm:w-[320px]"
             >
               <TiltCard max={6}>
-                <article className="relative rounded-2xl overflow-hidden aspect-[4/5] group cursor-pointer">
+                <a
+                  href={ep.to}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="relative block rounded-2xl overflow-hidden aspect-video group"
+                >
                   <img
                     src={ep.image}
-                    alt={`${ep.title} — ${ep.guest}`}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    alt={`${ep.title} — ${ep.subtitle}`}
+                    loading="lazy"
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-bg/95 via-bg/10 to-transparent" />
                   <span className="absolute top-3 left-3 w-8 h-8 rounded-full bg-bg/50 backdrop-blur flex items-center justify-center">
@@ -87,9 +104,9 @@ export default function LatestConversations() {
                     <h3 className="text-sm font-medium text-cream mt-1 leading-snug">
                       {ep.title}
                     </h3>
-                    <p className="text-xs text-cream/50 mt-1">{ep.guest}</p>
+                    <p className="text-xs text-cream/50 mt-1">{ep.subtitle}</p>
                   </div>
-                </article>
+                </a>
               </TiltCard>
             </Reveal>
           ))}
@@ -97,7 +114,7 @@ export default function LatestConversations() {
       </div>
 
       <Link
-        to="/shows"
+        to="/media"
         className="sm:hidden mt-6 inline-flex items-center gap-1 text-sm text-cream/70"
       >
         {conversations.viewAll} <ArrowRight size={14} />

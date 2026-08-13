@@ -3,7 +3,6 @@ import { NavLink, Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { nav } from "../data/content";
-import ThemeToggle from "./ThemeToggle";
 
 // ---------------------------------------------------------------------------
 // Navbar
@@ -77,18 +76,16 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden lg:flex items-center gap-4">
-          <a
-            href="mailto:hello@tanzatalks.com"
+          <Link
+            to="/contact"
             className="border border-accent text-accent text-sm px-5 py-2.5 rounded-full hover:bg-accent hover:text-bg transition-colors"
           >
             {nav.cta}
-          </a>
-          {/* <ThemeToggle /> */}
+          </Link>
         </div>
 
-        {/* Mobile: theme toggle + hamburger */}
+        {/* Mobile: hamburger */}
         <div className="lg:hidden flex items-center gap-3">
-          {/* <ThemeToggle /> */}
           <button
             className="text-cream"
             aria-label={open ? "Close menu" : "Open menu"}
@@ -123,13 +120,13 @@ export default function Navbar() {
                   {link.label}
                 </NavLink>
               ))}
-              <a
-                href="mailto:hello@tanzatalks.com"
+              <Link
+                to="/contact"
                 onClick={() => setOpen(false)}
                 className="mt-2 border border-accent text-accent text-sm text-center px-5 py-3 rounded-full"
               >
                 {nav.cta}
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}

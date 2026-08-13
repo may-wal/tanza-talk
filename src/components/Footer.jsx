@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Mail, ArrowRight } from "lucide-react";
 import { FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa";
-import { footer, nav } from "../data/content";
+import { footer, nav, social } from "../data/content";
 import Reveal from "./Reveal";
 
 // ---------------------------------------------------------------------------
@@ -36,22 +36,40 @@ export default function Footer() {
             {footer.tagline}
           </p>
           <div className="flex gap-4 mt-6">
-            <FaInstagram
-              size={16}
-              className="text-cream/60 hover:text-accent cursor-pointer transition-colors"
-            />
-            <FaYoutube
-              size={16}
-              className="text-cream/60 hover:text-accent cursor-pointer transition-colors"
-            />
-            <FaLinkedin
-              size={16}
-              className="text-cream/60 hover:text-accent cursor-pointer transition-colors"
-            />
-            <Mail
-              size={16}
-              className="text-cream/60 hover:text-accent cursor-pointer transition-colors"
-            />
+            <a
+              href={social.instagram}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Instagram"
+              className="text-cream/60 hover:text-accent transition-colors"
+            >
+              <FaInstagram size={16} />
+            </a>
+            <a
+              href={social.youtube}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="YouTube"
+              className="text-cream/60 hover:text-accent transition-colors"
+            >
+              <FaYoutube size={16} />
+            </a>
+            <a
+              href={social.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              aria-label="LinkedIn"
+              className="text-cream/60 hover:text-accent transition-colors"
+            >
+              <FaLinkedin size={16} />
+            </a>
+            <a
+              href={social.email}
+              aria-label="Email"
+              className="text-cream/60 hover:text-accent transition-colors"
+            >
+              <Mail size={16} />
+            </a>
           </div>
         </div>
 

@@ -6,8 +6,6 @@ import {
   Landmark,
   Eye,
   MapPin,
-  Mic,
-  MicOff,
 } from "lucide-react";
 import { FaInstagram, FaYoutube, FaLinkedin } from "react-icons/fa";
 import {
@@ -19,9 +17,7 @@ import {
   useTransform,
   useInView,
 } from "framer-motion";
-import { hero, stats } from "../data/content";
-import flashSound from "../audio/flash.mp3";
-import ambienceSound from "../audio/ambience.mp3";
+import { hero, stats, social } from "../data/content";
 
 // ---------------------------------------------------------------------------
 // IMAGE REFERENCES
@@ -46,7 +42,7 @@ import speakerImg from "../images/speaker.png";
 // Dust motes: scattered through the frame (not spawned at the bottom edge),
 // each with its own gentle rise distance + horizontal sway so they read as
 // suspended particles drifting in light, not bubbles rising from below.
-const DUST = Array.from({ length: 140 }, (_, i) => {
+const DUST = Array.from({ length: 50 }, (_, i) => {
   const seed = i * 37 + 11;
   return {
     id: i,
@@ -259,41 +255,9 @@ function AudienceDepth() {
 }
 
 // ---------------------------------------------------------------------------
-// Layer 2b — camera flashes scattered through the audience
+// Layer 2b — camera flashes scattered through the audience (visual only)
 // ---------------------------------------------------------------------------
-function CameraFlashes({ onFlash }) {
-  // Sound is scheduled here with plain timers, independent of Framer Motion's
-  // animation lifecycle. `onAnimationStart` only fires once when an infinite
-  // `repeat` animation first kicks off — it does NOT re-fire on every loop
-  // iteration, which is why the shutter sound wasn't repeating. Each flash
-  // gets its own delay (first fire) then a repeating interval matching its
-  // visual period (burst + gap), so sound and light stay in sync forever.
-  useEffect(() => {
-    if (!onFlash) return;
-
-    const timeouts = [];
-    const intervals = [];
-
-    FLASHES.forEach((f) => {
-      const periodMs = (f.burstDur + f.cycle) * 1000;
-      const delayMs = f.delay * 1000;
-
-      const fire = () => onFlash(0.7 + f.size / 10);
-
-      const t = setTimeout(() => {
-        fire();
-        intervals.push(setInterval(fire, periodMs));
-      }, delayMs);
-
-      timeouts.push(t);
-    });
-
-    return () => {
-      timeouts.forEach(clearTimeout);
-      intervals.forEach(clearInterval);
-    };
-  }, [onFlash]);
-
+function CameraFlashes() {
   return (
     <div
       aria-hidden="true"
@@ -606,7 +570,7 @@ function SpeakerLayer({ springX, springY, speakerScrollY }) {
         <img
           src={speakerImg}
           alt="Speaker on stage"
-          className="absolute bottom-0 right-0 h-full w-auto max-w-none object-contain object-bottom"
+          className="absolute bottom-0 right-0 h-full w-auto max-w-none object-contain object-bottom translate-x-[10%]"
           style={{
             filter: "drop-shadow(0 24px 40px rgba(0,0,0,0.4))",
             maskImage:
@@ -693,54 +657,6 @@ function ScrollIndicator() {
 }
 
 // ---------------------------------------------------------------------------
-// Ambient Audio Engine — never autoplays; activated by explicit user click
-// ---------------------------------------------------------------------------
-function AudioEngine({ audioRef }) {
-  const [playing, setPlaying] = useState(false);
-
-  const toggle = useCallback(() => {
-    if (!audioRef?.current) return;
-
-    const audio = audioRef.current;
-    audio.volume = 0.65;
-    audio.loop = true;
-    audio.muted = false;
-
-    if (playing) {
-      audio.pause();
-      setPlaying(false);
-    } else {
-      audio.play().catch(() => {
-        // Browser blocked autoplay — silently fail
-      });
-      setPlaying(true);
-    }
-  }, [audioRef, playing]);
-
-  return (
-    <motion.button
-      onClick={toggle}
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ delay: 3.5, duration: 0.8 }}
-      className="absolute bottom-8 right-4 sm:right-6 lg:right-8 z-20 flex items-center gap-2 text-cream/35 hover:text-accent/80 transition-colors duration-300 group"
-      aria-label={playing ? "Mute audience ambience" : "Play audience ambience"}
-      id="hero-audio-toggle"
-    >
-      {playing ? <Mic size={13} /> : <MicOff size={13} />}
-      <span className="text-[10px] tracking-[0.2em] uppercase">
-        {playing ? "Live" : "Ambience"}
-      </span>
-      <span
-        className={`w-1.5 h-1.5 rounded-full transition-colors ${
-          playing ? "bg-accent animate-pulse" : "bg-cream/25"
-        }`}
-      />
-    </motion.button>
-  );
-}
-
-// ---------------------------------------------------------------------------
 // First-visit intro overlay — near-dark → spotlight sweep → scene revealed
 // ---------------------------------------------------------------------------
 function IntroOverlay({ onComplete }) {
@@ -784,7 +700,7 @@ function SocialRail() {
       </span>
       <div className="w-px h-8 bg-cream/15" />
       <a
-        href="https://instagram.com"
+        href={social.instagram}
         target="_blank"
         rel="noreferrer"
         aria-label="Instagram"
@@ -793,7 +709,7 @@ function SocialRail() {
         <FaInstagram size={15} />
       </a>
       <a
-        href="https://youtube.com"
+        href={social.youtube}
         target="_blank"
         rel="noreferrer"
         aria-label="YouTube"
@@ -802,7 +718,7 @@ function SocialRail() {
         <FaYoutube size={15} />
       </a>
       <a
-        href="https://linkedin.com"
+        href={social.linkedin}
         target="_blank"
         rel="noreferrer"
         aria-label="LinkedIn"
@@ -819,23 +735,6 @@ function SocialRail() {
 // ===========================================================================
 export default function Hero() {
   const sectionRef = useRef(null);
-  const ambienceAudioRef = useRef(null);
-
-  // Camera-shutter sound: spawn a fresh Audio() per flash instead of reusing
-  // one element. Reusing a single element and resetting currentTime cuts off
-  // the previous shutter click whenever two flashes land close together —
-  // spawning a new instance lets overlapping shutters play in full.
-  const playFlashSound = useCallback(() => {
-    try {
-      const audio = new Audio(flashSound);
-      audio.volume = 0.55;
-      audio.play().catch(() => {
-        // Browser blocked autoplay before any user gesture — silently fail
-      });
-    } catch (e) {
-      // ignore
-    }
-  }, []);
 
   // ── Intro sequence state ──────────────────────────────────────────────────
   const hasSeenIntro =
@@ -893,14 +792,12 @@ export default function Hero() {
     <section
       ref={sectionRef}
       id="hero"
-      className="relative overflow-hidden min-h-screen flex flex-col"
+      className="relative overflow-hidden min-h-[78vh] flex flex-col"
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       style={{ background: "#0B0A09" }}
     >
       <AtmosphereStyles />
-
-      <audio ref={ambienceAudioRef} src={ambienceSound} preload="auto" />
 
       {/* ── LAYER 1 — Cinematic auditorium background ── */}
       <CinematicBackground bgY={bgY} />
@@ -909,7 +806,7 @@ export default function Hero() {
       <AudienceDepth />
 
       {/* ── LAYER 2b — Camera flashes from the crowd ── */}
-      <CameraFlashes onFlash={playFlashSound} />
+      <CameraFlashes />
 
       {/* ── LAYER 3 — Spotlight beams ── */}
       <Spotlights scrollYProgress={scrollYProgress} />
@@ -937,7 +834,7 @@ export default function Hero() {
         className="relative z-10 flex-1 flex items-center"
         style={{ y: contentY }}
       >
-        <div className="max-w-8xl mx-auto container-px w-full py-24 lg:py-32">
+        <div className="max-w-8xl mx-auto container-px w-full py-16 lg:py-20">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             {/* ── LEFT COLUMN — text + CTA ── */}
             <div className="max-w-xl">
@@ -996,10 +893,10 @@ export default function Hero() {
                 {hero.paragraph}
               </motion.p>
 
-              {/* CTA button — light sweep on hover */}
-              <motion.div {...mk(0.82)} className="mt-9">
+              {/* CTA buttons — primary with light sweep on hover, secondary outlined */}
+              <motion.div {...mk(0.82)} className="mt-9 flex flex-wrap items-center gap-4">
                 <Link
-                  to="/shows"
+                  to="/contact"
                   id="hero-cta"
                   className="hero-cta-btn group inline-flex items-center gap-3 bg-accent text-bg font-semibold text-sm px-8 py-4 rounded-full"
                 >
@@ -1016,6 +913,12 @@ export default function Hero() {
                     <ArrowRight size={16} />
                   </motion.span>
                   <span className="hero-cta-sweep" aria-hidden="true" />
+                </Link>
+                <Link
+                  to="/media"
+                  className="inline-flex items-center gap-2 border border-cream/30 text-cream text-sm font-medium px-8 py-4 rounded-full hover:border-accent hover:text-accent transition-colors"
+                >
+                  {hero.secondaryCta}
                 </Link>
               </motion.div>
 
@@ -1052,9 +955,6 @@ export default function Hero() {
 
       {/* Microphone-style scroll indicator */}
       <ScrollIndicator />
-
-      {/* Ambient audio toggle (never autoplays) */}
-      <AudioEngine audioRef={ambienceAudioRef} />
 
       {/* First-visit intro overlay */}
       {showIntro && <IntroOverlay onComplete={handleIntroComplete} />}

@@ -1,46 +1,42 @@
-import { Heart, Sparkles, TrendingUp } from "lucide-react";
+import { Heart, Sparkles, TrendingUp, ArrowUpRight } from "lucide-react";
 import PageTransition from "../components/PageTransition";
 import PageHeader from "../components/PageHeader";
 import Reveal from "../components/Reveal";
-import TiltCard from "../components/TiltCard";
+import PersonAvatar from "../components/PersonAvatar";
+import StatsBar from "../components/StatsBar";
+import ContactBand from "../components/ContactBand";
 import { aboutPage } from "../data/content";
 
 const valueIcons = { heart: Heart, sparkles: Sparkles, "trending-up": TrendingUp };
 
 // ---------------------------------------------------------------------------
 // AboutPage ("/about")
-// The full company story: mission statement, a founding timeline, core
-// values, and the team. The shorter "About" teaser on Home links here via
-// "View All" style CTAs elsewhere in the site.
+//
+// Mission, values, the founder, and the published numbers.
+//
+// The invented founding timeline (2019 hostel-room podcast, 2021 five-city
+// series, 2023 pivot, 2025 milestone) has been removed — none of it appears
+// on tanzatalks.com, and the only dated fact in it, the 2022 Career Point
+// event, now lives on the Events page. The team grid's three placeholder
+// members are gone too; the site names one person, so the page shows one.
 // ---------------------------------------------------------------------------
 export default function AboutPage() {
+  const { founder } = aboutPage;
+
   return (
     <PageTransition>
       <PageHeader eyebrow={aboutPage.eyebrow} title={aboutPage.title} description={aboutPage.intro} />
 
       {/* Mission */}
-      <section className="max-w-8xl mx-auto container-px py-10">
+      <section className="max-w-8xl mx-auto container-px py-6">
         <Reveal className="bg-panel rounded-3xl border border-line/10 p-8 sm:p-12 theme-shadow max-w-3xl">
           <h2 className="font-display text-2xl sm:text-3xl text-cream">Our Mission</h2>
           <p className="text-cream/60 mt-4 leading-relaxed">{aboutPage.mission}</p>
         </Reveal>
       </section>
 
-      {/* Timeline */}
-      <section className="max-w-8xl mx-auto container-px py-10">
-        <Reveal>
-          <h2 className="font-display text-2xl sm:text-3xl text-cream mb-10">How we got here</h2>
-        </Reveal>
-        <div className="relative pl-8 border-l border-line/15 space-y-10">
-          {aboutPage.timeline.map((t, i) => (
-            <Reveal key={t.year} delay={i * 0.08} className="relative">
-              <span className="absolute -left-[38px] top-1 w-4 h-4 rounded-full bg-accent ring-4 ring-bg" />
-              <div className="font-display text-accent text-lg">{t.year}</div>
-              <p className="text-cream/70 mt-1 max-w-xl">{t.text}</p>
-            </Reveal>
-          ))}
-        </div>
-      </section>
+      {/* Published numbers */}
+      <StatsBar />
 
       {/* Values */}
       <section className="max-w-8xl mx-auto container-px py-10">
@@ -63,32 +59,42 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Team */}
-      <section className="max-w-8xl mx-auto container-px py-10 pb-20">
+      {/* Founder */}
+      <section className="max-w-8xl mx-auto container-px py-10 pb-16">
         <Reveal>
-          <h2 className="font-display text-2xl sm:text-3xl text-cream mb-10">The team behind the stage</h2>
+          <h2 className="font-display text-2xl sm:text-3xl text-cream mb-10">
+            Who started it
+          </h2>
         </Reveal>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {aboutPage.team.map((m, i) => (
-            <Reveal key={m.name} delay={i * 0.08}>
-              <TiltCard max={6}>
-                <div className="relative rounded-2xl overflow-hidden aspect-[3/4] group">
-                  <img
-                    src={m.image}
-                    alt={m.name}
-                    className="w-full h-full object-cover absolute inset-0 transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/30 to-transparent" />
-                  <div className="absolute bottom-5 left-5 right-5">
-                    <h3 className="text-cream font-medium">{m.name}</h3>
-                    <p className="text-cream/50 text-xs mt-0.5">{m.role}</p>
-                  </div>
-                </div>
-              </TiltCard>
-            </Reveal>
-          ))}
-        </div>
+
+        <Reveal delay={0.08}>
+          <div className="bg-panel rounded-3xl border border-line/10 p-8 sm:p-10 lg:p-12 theme-shadow">
+            <div className="grid lg:grid-cols-[auto_1fr] gap-8 lg:gap-12 items-start">
+              <PersonAvatar
+                name={founder.name}
+                className="w-28 h-28 sm:w-36 sm:h-36 rounded-3xl shrink-0"
+              />
+              <div>
+                <h3 className="font-display text-2xl text-cream">{founder.name}</h3>
+                <p className="text-accent text-sm mt-1">{founder.role}</p>
+                <blockquote className="text-cream/65 mt-6 leading-relaxed max-w-2xl">
+                  &ldquo;{founder.quote}&rdquo;
+                </blockquote>
+                <a
+                  href={founder.instagram}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center gap-1.5 text-cream/50 hover:text-accent text-sm mt-6 transition-colors"
+                >
+                  @tanzaxmanishkr <ArrowUpRight size={14} />
+                </a>
+              </div>
+            </div>
+          </div>
+        </Reveal>
       </section>
+
+      <ContactBand />
     </PageTransition>
   );
 }
