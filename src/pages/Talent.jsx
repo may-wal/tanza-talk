@@ -1,5 +1,4 @@
-import { Link } from "react-router-dom";
-import { ArrowRight, Users } from "lucide-react";
+import { Users } from "lucide-react";
 import PageTransition from "../components/PageTransition";
 import PageHeader from "../components/PageHeader";
 import Reveal from "../components/Reveal";
@@ -11,18 +10,13 @@ import { talentPage } from "../data/content";
 // ---------------------------------------------------------------------------
 // Talent / Influencers ("/talent")
 //
-// Two tiers, because the source site publishes two tiers of information:
-//   1. `featured` — people tanzatalks.com documents with a role and/or a
-//      follower count. Full cards.
-//   2. `roster`   — the remaining names from the published influencer list,
-//      shown as a name grid. The site says nothing else about them, so the
-//      page says nothing else about them.
-//
-// The previous version of this page had a category filter over invented
-// categories, invented follower counts and stock-photo headshots labelled
-// with real people's names. All three are gone. Cards now render through
-// PersonAvatar — a real photo where one's on file, a Monogram tile
-// otherwise — see data/content.js `personPhotos` and components/PersonAvatar.jsx.
+// One grid, one card per name — all 34 published on tanzatalks.com/influencer
+// (see the sourcing note on `talentPage` in data/content.js). There used to
+// be a second "wider roster" section below this one, a plain text list for
+// names without a photo — removed, since every card now renders an image
+// through PersonAvatar (a real photo where one's on file, a Monogram
+// initials tile otherwise), so there's no longer a tier that needs a
+// different, text-only treatment.
 // ---------------------------------------------------------------------------
 export default function Talent() {
   return (
@@ -33,17 +27,16 @@ export default function Talent() {
         description={talentPage.description}
       />
 
-      {/* Featured — documented role and/or reach */}
-      <section className="max-w-8xl mx-auto container-px pb-10">
+      <section className="max-w-8xl mx-auto container-px pb-16">
         <Reveal>
           <h2 className="font-display text-2xl sm:text-3xl text-cream mb-8">
             {talentPage.featuredTitle}
           </h2>
         </Reveal>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
           {talentPage.featured.map((s, i) => (
-            <Reveal key={s.name} delay={(i % 5) * 0.07}>
+            <Reveal key={s.name} delay={(i % 10) * 0.04}>
               <TiltCard max={7}>
                 <div className="relative rounded-2xl overflow-hidden aspect-[3/4] group">
                   <PersonAvatar
@@ -57,49 +50,18 @@ export default function Talent() {
                     </span>
                   )}
                   <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="text-cream font-medium leading-tight">{s.name}</h3>
-                    <p className="text-cream/50 text-xs mt-1">{s.role}</p>
+                    <h3 className="text-cream font-medium leading-tight text-sm sm:text-base">
+                      {s.name}
+                    </h3>
+                    {s.role && (
+                      <p className="text-cream/50 text-xs mt-1">{s.role}</p>
+                    )}
                   </div>
                 </div>
               </TiltCard>
             </Reveal>
           ))}
         </div>
-      </section>
-
-      {/* Wider roster — names only, as published */}
-      <section className="max-w-8xl mx-auto container-px pb-16">
-        <Reveal className="mb-6">
-          <h2 className="font-display text-2xl sm:text-3xl text-cream">
-            {talentPage.rosterTitle}
-          </h2>
-          <p className="text-cream/50 text-sm mt-3 max-w-xl leading-relaxed">
-            {talentPage.rosterNote}
-          </p>
-        </Reveal>
-
-        <Reveal>
-          <ul className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-1">
-            {talentPage.roster.map((name) => (
-              <li
-                key={name}
-                className="flex items-center gap-3 py-2.5 border-b border-line/10 text-cream/70 text-sm"
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-accent/50 shrink-0" />
-                {name}
-              </li>
-            ))}
-          </ul>
-        </Reveal>
-
-        <Reveal className="mt-10">
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 bg-accent text-bg font-medium text-sm px-7 py-3.5 rounded-full hover:bg-accent2 transition-colors"
-          >
-            Enquire about a name <ArrowRight size={16} />
-          </Link>
-        </Reveal>
       </section>
 
       <ContactBand />

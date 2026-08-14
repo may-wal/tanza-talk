@@ -1,29 +1,31 @@
 import { useState, useCallback } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Play, ArrowRight, Clapperboard, Smartphone } from "lucide-react";
+import { Play, ArrowRight, Clapperboard } from "lucide-react";
 import { whatsNew } from "../data/content";
 import Reveal from "./Reveal";
 import TiltCard from "./TiltCard";
 import MagButton from "./MagButton";
 
-const artIcons = { clapperboard: Clapperboard, smartphone: Smartphone };
+const artIcons = { clapperboard: Clapperboard };
 
 // ---------------------------------------------------------------------------
 // WhatsNew
 //
 // The announcement slot on Home, built as the two-column feature panel the
 // old FeaturedSeries component used: typographic art card on the left, copy
-// + stats + dual CTAs on the right, dots underneath.
+// + optional stats + CTA(s) on the right, dots underneath.
 //
-// Unlike that component — whose dots were decorative, hardcoded to four and
-// wired to a permanently-zero `active` state — these dots actually drive the
-// carousel, and there is one per slide. Slides cross-fade via AnimatePresence
-// with `mode="wait"` so the outgoing panel clears before the next arrives.
+// Data-driven over `whatsNew.items` — currently just the one Journey of
+// Legacy card, but built to carry more without a rewrite. Dots only render
+// once there's more than one item, and only appear when there's something
+// to switch between (they drive the carousel; they're not decorative).
+// Slides cross-fade via AnimatePresence with `mode="wait"` so the outgoing
+// panel clears before the next arrives. `stats`, `note` and `secondaryCta`
+// are all optional per item and simply don't render when absent.
 //
-// The art card is typographic rather than photographic: there is no artwork
-// for either announcement, and the old panel's stock image 404'd in place,
-// leaving raw alt text at the top of the section.
+// The art card is typographic rather than photographic — there's no
+// artwork for the announcements this renders yet.
 // ---------------------------------------------------------------------------
 
 // Left-hand art card — a warm gradient panel with the slide's own wordmark.
@@ -154,13 +156,15 @@ export default function WhatsNew() {
                   )}
                 </MagButton>
 
-                <MagButton
-                  as={Link}
-                  to={item.secondaryCta.to}
-                  className="inline-flex items-center gap-2 border border-cream/30 text-cream text-sm px-6 py-3.5 rounded-full hover:border-accent hover:text-accent transition-colors"
-                >
-                  {item.secondaryCta.label} <ArrowRight size={16} />
-                </MagButton>
+                {item.secondaryCta && (
+                  <MagButton
+                    as={Link}
+                    to={item.secondaryCta.to}
+                    className="inline-flex items-center gap-2 border border-cream/30 text-cream text-sm px-6 py-3.5 rounded-full hover:border-accent hover:text-accent transition-colors"
+                  >
+                    {item.secondaryCta.label} <ArrowRight size={16} />
+                  </MagButton>
+                )}
               </div>
             </div>
           </motion.div>

@@ -56,6 +56,18 @@ import rajpalYadavImg from "../images/rajpal yadav.png";
 import ridhimaAroraImg from "../images/ridhima.png";
 import rjKartikImg from "../images/rj kartik.png";
 import sonuSharmaImg from "../images/sonu sharma.png";
+import anupSoniImg from "../images/anup-soni-tanza.png";
+import arunPanditImg from "../images/arun-pandit-tanza.png";
+import aviAryaImg from "../images/avi-arya-tanza.png";
+import dineshMohanImg from "../images/dinesh-mohan-tanza.png";
+import kamalneetSinghImg from "../images/kamalneet-singh-tanza.png";
+import nitinVijayImg from "../images/nitin-vijya-tanza.png";
+import saurabhBhatnagarImg from "../images/saurabh-bhatnagar-tanza.png";
+import shefaliBaggaImg from "../images/shefali-bagga-tanza.png";
+import shreyaPattarImg from "../images/shreya-pattar-tanza.png";
+import sunnyGargImg from "../images/sunny-garg-tanza.png";
+import manishKumarImg from "../images/manish-kr-profile.png";
+import anujKumarImg from "../images/anuj-kumar-profile.png";
 
 export const personPhotos = {
   "Arvind Arora": arvindAroraImg,
@@ -69,6 +81,18 @@ export const personPhotos = {
   "Riddhima Arora": ridhimaAroraImg,
   "RJ Kartik": rjKartikImg,
   "Sonu Sharma": sonuSharmaImg,
+  "Anup Soni": anupSoniImg,
+  "Arun Pandit": arunPanditImg,
+  "Avi Arya": aviAryaImg,
+  "Dinesh Mohan": dineshMohanImg,
+  "Kamalneet Singh": kamalneetSinghImg,
+  "Nitin Vijay": nitinVijayImg,
+  "Saurabh Bhatnagar": saurabhBhatnagarImg,
+  "Shefali Bagga": shefaliBaggaImg,
+  "Shreya Pattar": shreyaPattarImg,
+  "Sunny Garg": sunnyGargImg,
+  "Manish Kumar": manishKumarImg,
+  "Anuj Kumar": anujKumarImg,
 };
 
 export const nav = {
@@ -140,74 +164,100 @@ export const audienceRouter = {
       icon: "mic",
     },
   ],
-
-  // Client logo strip, rendered under the three cards.
-  //
-  // TO ADD A CLIENT: add an entry below. A `name` on its own renders as a
-  // text wordmark, which is enough to list someone. To show a real logo,
-  // drop the file into src/images/clients/, import it at the top of this
-  // file, and set `logo` on the entry:
-  //
-  //     import careerPointLogo from "../images/clients/career-point.png";
-  //     { name: "Career Point", logo: careerPointLogo }
-  //
-  // Only the two clients tanzatalks.com actually names are seeded here —
-  // Career Point (the 2022 Kota event host) and Namhya Foods (a featured
-  // founder's company). Add the rest of your real client list; please don't
-  // pad it with names you haven't worked with.
-  clientsTitle: "Brands and institutes we've worked with",
-  clients: [{ name: "Career Point, Kota" }, { name: "Namhya Foods" }],
 };
 
 // ---------------------------------------------------------------------------
-// What's New — announcement carousel on Home, directly under the audience
-// router. One slide per item, rendered as a two-column feature panel
-// (typographic art card on the left, copy + stats + CTAs on the right).
+// Client logo wall — real brand and institute logos, supplied directly
+// (src/images/logos/), rendered as their own showcase section right after
+// the audience-router cards on Home. Two names here corroborate other real
+// data already in this file: Isha Foundation (Sadhguru's organisation —
+// see the Sadhguru episode in `conversations`) and Lovely Professional
+// University (the "TANZA TALKS x LPU" credit on the Payal Rohatgi episode).
 //
-// ⚠️ THE THREE "Journey of Legacy" FIGURES BELOW ARE UNVERIFIED.
-// They came from an earlier draft of this site, not from tanzatalks.com,
-// which has never published anything about this series. They are kept only
-// because the layout was signed off with them visible. REPLACE THEM WITH
-// REAL COUNTS, or delete the `stats` array — the slide renders fine without
-// it, as the app slide below demonstrates.
+// TO ADD A CLIENT: drop a logo file into src/images/logos/, import it below,
+// and add a `{ name, logo }` entry to the list.
+// ---------------------------------------------------------------------------
+import aorusLogo from "../images/logos/aorus-white.png";
+import bhartiShareMarketLogo from "../images/logos/bharti-share-market-white.png";
+import careerPointLogo from "../images/logos/career-point-white.png";
+import enprendiaLogo from "../images/logos/enprendia-white.png";
+import epicStuffLogo from "../images/logos/epic-stuff-white.png";
+import erasmusPlusEuLogo from "../images/logos/erasmus-plus-eu-white.png";
+import euStartupsLogo from "../images/logos/eu-startups-white.png";
+import gameSeeLogo from "../images/logos/gamesee-white.png";
+import geeksforgeeksLogo from "../images/logos/geeksforgeeks-white.png";
+import grabOnLogo from "../images/logos/grabon-white.png";
+import iitRoparLogo from "../images/logos/iit-ropar-white.png";
+import ishaFoundationLogo from "../images/logos/isha-foundation-white.png";
+import lpuLogo from "../images/logos/lovely-professional-university-white.png";
+import motionEducationLogo from "../images/logos/motion-education-white.png";
+import nimsUniversityLogo from "../images/logos/nims-university-white.png";
+import prepBytesLogo from "../images/logos/prepbytes-white.png";
+import radioAddaLogo from "../images/logos/radio-adda-white.png";
+import redFmLogo from "../images/logos/red-fm-935-white.png";
+import simplilearnLogo from "../images/logos/simplilearn-white.png";
+import startupIndiaLogo from "../images/logos/startup-india-white.png";
+import tedxLogo from "../images/logos/tedx-white.png";
+import theSouledStoreLogo from "../images/logos/the-souled-store-white.png";
+import unacademyLogo from "../images/logos/unacademy-white.png";
+
+export const clientLogos = {
+  // Rendered as a plain subheading above the logo strip — no eyebrow tag,
+  // since AudienceRouter's own eyebrow/title sits directly above this.
+  title: "Brands and institutes that have trusted Tanza Talks.",
+  list: [
+    { name: "AORUS", logo: aorusLogo },
+    { name: "Bharti Share Market", logo: bhartiShareMarketLogo },
+    { name: "Career Point", logo: careerPointLogo },
+    { name: "Enprendia", logo: enprendiaLogo },
+    { name: "Epic Stuff", logo: epicStuffLogo },
+    { name: "Erasmus+ EU", logo: erasmusPlusEuLogo },
+    { name: "EU-Startups", logo: euStartupsLogo },
+    { name: "GameSee", logo: gameSeeLogo },
+    { name: "GeeksforGeeks", logo: geeksforgeeksLogo },
+    { name: "GrabOn", logo: grabOnLogo },
+    { name: "IIT Ropar", logo: iitRoparLogo },
+    { name: "Isha Foundation", logo: ishaFoundationLogo },
+    { name: "Lovely Professional University", logo: lpuLogo },
+    { name: "Motion Education", logo: motionEducationLogo },
+    { name: "NIMS University", logo: nimsUniversityLogo },
+    { name: "PrepBytes", logo: prepBytesLogo },
+    { name: "Radio Adda", logo: radioAddaLogo },
+    { name: "Red FM 93.5", logo: redFmLogo },
+    { name: "Simplilearn", logo: simplilearnLogo },
+    { name: "Startup India", logo: startupIndiaLogo },
+    { name: "TEDx", logo: tedxLogo },
+    { name: "The Souled Store", logo: theSouledStoreLogo },
+    { name: "Unacademy", logo: unacademyLogo },
+  ],
+};
+
+// ---------------------------------------------------------------------------
+// What's New — announcement slot on Home, directly under the audience
+// router (id="whats-new", so other pages can link straight to it). One
+// card, rendered as a two-column feature panel: typographic art card on the
+// left, copy + CTA on the right.
 //
-// Same for the app slide: no launch date or store links are asserted,
-// because none have been given. Add `storeLinks` when they exist.
+// Only one real fact is asserted here — that Journey of Legacy is coming to
+// JioHotstar — so that's all the card claims. No episode/city/college count
+// is given, because none has been published; don't add invented figures
+// back in. There's no real JioHotstar URL yet either (the show hasn't
+// launched), so the CTA points at the contact form instead of a fabricated
+// streaming link.
 // ---------------------------------------------------------------------------
 export const whatsNew = {
   eyebrow: "WHAT'S NEW",
   items: [
     {
       id: "journey-of-legacy",
-      eyebrow: "FEATURED ORIGINAL SERIES",
+      eyebrow: "COMING SOON",
       title: "Journey of Legacy",
       description:
-        "A documentary series capturing the people, campuses and stories that shape India's institutions.",
+        "Tanza Talks' original documentary series — the people, campuses and stories that shape India's institutions.",
       art: { overline: "JOURNEY OF", word: "LEGACY", icon: "clapperboard" },
-      stats: [
-        { value: "20+", label: "Colleges" }, // ⚠️ UNVERIFIED — see note above
-        { value: "15+", label: "Cities" }, // ⚠️ UNVERIFIED
-        { value: "50+", label: "Episodes" }, // ⚠️ UNVERIFIED
-      ],
-      primaryCta: {
-        label: "Watch on YouTube",
-        to: YOUTUBE_URL,
-        external: true,
-        icon: "play",
-      },
-      secondaryCta: { label: "Explore the Series", to: "/contact" },
-    },
-    {
-      id: "tanza-talks-app",
-      eyebrow: "COMING SOON",
-      title: "The Tanza Talks App",
-      description:
-        "Every podcast, talk show and event in one place — with an alert the moment a new episode drops.",
-      art: { overline: "COMING SOON", word: "THE APP", icon: "smartphone" },
-      note: "Launching on Android and iOS.",
+      note: "Streaming soon on JioHotstar.",
       upcoming: true,
       primaryCta: { label: "Get Notified At Launch", to: "/contact" },
-      secondaryCta: { label: "Talk To Us", to: "/contact" },
     },
   ],
 };
@@ -424,14 +474,25 @@ export const aboutPage = {
       icon: "trending-up",
     },
   ],
-  founder: {
-    name: "Manish Kumar",
-    role: "Founder & CEO",
-    // SOURCE: founder statement on the tanzatalks.com homepage
-    quote:
-      "The genesis of Tanza Talks is closely linked to the turmoil each one of us faces when growing up. There comes a point in life when almost everyone feels he or she doesn't know what to do with life. Here Tanza Talks helps them to rise again, and ignites them to reach their full potential.",
-    instagram: "https://www.instagram.com/tanzaxmanishkr/",
-  },
+  // The team behind the company. No quotes here by design — the founder's
+  // statement still appears as its own pull-quote in `testimonials.founder`
+  // below, used on Home's FounderNote section; this is just who they are.
+  team: [
+    {
+      name: "Manish Kumar",
+      role: "Founder & CEO",
+      social: {
+        linkedin: "https://www.linkedin.com/in/manishprak/",
+        facebook: "https://www.facebook.com/Manish.prakash619/",
+        instagram: "https://www.instagram.com/tanzaxmanishkr/",
+      },
+    },
+    {
+      name: "Anuj Kumar",
+      role: "Co-Founder & COO",
+      // No social links given yet — card renders without the row.
+    },
+  ],
 };
 
 // ---------------------------------------------------------------------------
@@ -468,6 +529,21 @@ export const speakers = {
   ],
 };
 
+// ---------------------------------------------------------------------------
+// Talent roster — one card per name, all 34 published on
+// tanzatalks.com/influencer, in the site's own listed order. Role/reach is
+// only set for the subset the site says more about (from the homepage
+// "OUR PAST GUEST" section and the Event page); everyone else renders
+// name-only — the site publishes nothing further about them, so this
+// doesn't invent a role to fill the space.
+//
+// Every card goes through PersonAvatar (data/content.js `personPhotos`): a
+// real photo where one's on file, a Monogram initials tile otherwise. There
+// used to be a second "wider roster" section below this one, rendered as a
+// plain text list for names without a photo — removed, since every name now
+// gets an image card here regardless of whether that image is a photo or a
+// Monogram.
+// ---------------------------------------------------------------------------
 export const talentPage = {
   eyebrow: "OUR INFLUENCERS",
   title: "100+ influencers, speakers and entrepreneurs across India.",
@@ -475,56 +551,40 @@ export const talentPage = {
     "Tanza Talks has connected over 100 influencers, public speakers and entrepreneurs throughout India. These are the voices we've worked with and can bring to your campaign, campus or stage.",
   featuredTitle: "Guests & voices we've featured",
   featured: [
-    { name: "Arvind Arora", role: "Educator & Creator", reach: "24M+" },
-    { name: "RJ Kartik", role: "Radio Jockey & Creator", reach: "10M+" },
-    { name: "Mahendra Dogney", role: "Creator", reach: "8M+" },
     { name: "Jaya Kishori", role: "Motivational Speaker" },
-    { name: "Sonu Sharma", role: "Motivational Speaker" },
-    { name: "Rajpal Yadav", role: "Actor" },
-    { name: "Pramod Maheshwari", role: "Founder, Career Point Kota" },
-    { name: "Ridhima Arora", role: "Founder, Namhya Foods" },
-    { name: "Dr. Abhinit Gupta", role: "Physician & Surgeon" },
+    { name: "Anup Soni" },
+    { name: "Arvind Arora", role: "Educator & Creator", reach: "24M+" },
+    { name: "Nitin Vijay" },
+    { name: "Avi Arya" },
     { name: "Arun Pandit", role: "Astro Numerology Expert" },
-  ],
-  rosterTitle: "The wider roster",
-  rosterNote:
-    "Names published on tanzatalks.com. Reach and availability shared on request — get in touch and we'll send the current figures.",
-  // SOURCE: tanzatalks.com/influencer — full published list.
-  roster: [
-    "Jaya Kishori",
-    "Anup Soni",
-    "Arvind Arora",
-    "Nitin Vijay",
-    "Avi Arya",
-    "Arun Pandit",
-    "Mahendra Dogney",
-    "Manish Pandey",
-    "Shefali Bagga",
-    "Shreya Pattar",
-    "Sunny Garg",
-    "Kamalneet Singh",
-    "Vipin Yadav",
-    "Saurabh Bhatnagar",
-    "Dinesh Mohan",
-    "Hardik Savla",
-    "Neha Agrawal",
-    "Rajpal Yadav",
-    "Sonu Sharma",
-    "Dilraj Singh Rawat",
-    "Pramod Maheshwari",
-    "Dr. Abhinit Gupta",
-    "Rahul Bhatnagar",
-    "RJ Kartik",
-    "Sherrnavaz Sam Jijina",
-    "Dr. Yogendra Singh Rathore",
-    "Ridhima Arora",
-    "Col. Shyam Vijay Simha",
-    "Piyush Sharma",
-    "Deven Pandey",
-    "Manvir Singh Anand",
-    "Abhinay Sharma",
-    "Sahil Khanna",
-    "Kissu Rahul",
+    { name: "Mahendra Dogney", role: "Creator", reach: "8M+" },
+    { name: "Manish Pandey" },
+    { name: "Shefali Bagga" },
+    { name: "Shreya Pattar" },
+    { name: "Sunny Garg" },
+    { name: "Kamalneet Singh" },
+    { name: "Vipin Yadav" },
+    { name: "Saurabh Bhatnagar" },
+    { name: "Dinesh Mohan" },
+    { name: "Hardik Savla" },
+    { name: "Neha Agrawal" },
+    { name: "Rajpal Yadav", role: "Actor" },
+    { name: "Sonu Sharma", role: "Motivational Speaker" },
+    { name: "Dilraj Singh Rawat" },
+    { name: "Pramod Maheshwari", role: "Founder, Career Point Kota" },
+    { name: "Dr. Abhinit Gupta", role: "Physician & Surgeon" },
+    { name: "Rahul Bhatnagar" },
+    { name: "RJ Kartik", role: "Radio Jockey & Creator", reach: "10M+" },
+    { name: "Sherrnavaz Sam Jijina" },
+    { name: "Dr. Yogendra Singh Rathore" },
+    { name: "Ridhima Arora", role: "Founder, Namhya Foods" },
+    { name: "Col. Shyam Vijay Simha" },
+    { name: "Piyush Sharma" },
+    { name: "Deven Pandey" },
+    { name: "Manvir Singh Anand" },
+    { name: "Abhinay Sharma" },
+    { name: "Sahil Khanna" },
+    { name: "Kissu Rahul" },
   ],
 };
 

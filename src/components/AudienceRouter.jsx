@@ -3,6 +3,7 @@ import { GraduationCap, Sparkles, Handshake, Mic, ArrowRight } from "lucide-reac
 import { audienceRouter } from "../data/content";
 import Reveal from "./Reveal";
 import TiltCard from "./TiltCard";
+import ClientLogos from "./ClientLogos";
 
 const icons = {
   "graduation-cap": GraduationCap,
@@ -17,6 +18,10 @@ const icons = {
 // and a prospective guest can each land on the right place in one click.
 // The guest card points off-site to the real "Be a Tanza Talks Speaker"
 // signup form, so cards support an `external` flag.
+//
+// The client logo strip (ClientLogos) renders as a second section within
+// this same component, below the cards, rather than as its own page
+// section — see ClientLogos.jsx.
 // ---------------------------------------------------------------------------
 export default function AudienceRouter() {
   return (
@@ -73,36 +78,7 @@ export default function AudienceRouter() {
         })}
       </div>
 
-      {/* Client logo strip.
-          Entries with a `logo` render the image; entries with only a `name`
-          render as a text wordmark, so a client can be listed before its
-          logo file exists. See data/content.js for how to add one. */}
-      {audienceRouter.clients?.length > 0 && (
-        <Reveal className="mt-12 pt-10 border-t border-line/10">
-          <p className="text-center text-cream/40 text-xs tracking-[0.18em] uppercase">
-            {audienceRouter.clientsTitle}
-          </p>
-
-          <ul className="flex flex-wrap items-center justify-center gap-x-12 gap-y-8 mt-8">
-            {audienceRouter.clients.map((c) => (
-              <li key={c.name}>
-                {c.logo ? (
-                  <img
-                    src={c.logo}
-                    alt={c.name}
-                    loading="lazy"
-                    className="h-9 sm:h-10 w-auto object-contain opacity-50 hover:opacity-90 transition-opacity duration-300"
-                  />
-                ) : (
-                  <span className="font-display text-lg sm:text-xl text-cream/40 hover:text-cream/70 whitespace-nowrap transition-colors duration-300">
-                    {c.name}
-                  </span>
-                )}
-              </li>
-            ))}
-          </ul>
-        </Reveal>
-      )}
+      <ClientLogos />
     </section>
   );
 }

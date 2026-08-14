@@ -1,11 +1,12 @@
-import { Play, ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Play, ArrowUpRight, ArrowRight, Clapperboard } from "lucide-react";
 import PageTransition from "../components/PageTransition";
 import PageHeader from "../components/PageHeader";
 import Reveal from "../components/Reveal";
 import TiltCard from "../components/TiltCard";
 import PersonAvatar from "../components/PersonAvatar";
 import ContactBand from "../components/ContactBand";
-import { showsPage, social } from "../data/content";
+import { showsPage, social, whatsNew } from "../data/content";
 
 // ---------------------------------------------------------------------------
 // Watch ("/media")
@@ -20,7 +21,15 @@ import { showsPage, social } from "../data/content";
 // data/content.js for how every entry was verified. Past-guest cards (below
 // the episode grid) still go through PersonAvatar, since those are name +
 // role listings rather than links to a specific upload.
+//
+// A small strip below the header cross-promotes Journey of Legacy — the
+// upcoming JioHotstar series — pulling its copy from the same `whatsNew`
+// data as the full card on Home rather than duplicating it, so the two
+// never drift out of sync. It links to "/#whats-new", which ScrollToTop.jsx
+// resolves to that card on landing.
 // ---------------------------------------------------------------------------
+const journeyOfLegacy = whatsNew.items.find((i) => i.id === "journey-of-legacy");
+
 export default function Media() {
   return (
     <PageTransition>
@@ -29,6 +38,40 @@ export default function Media() {
         title={showsPage.title}
         description={showsPage.description}
       />
+
+      {/* Journey of Legacy — small cross-promo, full card lives on Home */}
+      {journeyOfLegacy && (
+        <section className="max-w-8xl mx-auto container-px pt-2 pb-10">
+          <Reveal>
+            <Link
+              to="/#whats-new"
+              className="group flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5 bg-panel rounded-2xl border border-line/10 theme-shadow px-6 py-5 hover:border-accent/30 transition-colors"
+            >
+              <div className="flex items-center gap-4 flex-1 min-w-0">
+                <div className="w-11 h-11 rounded-xl border border-accent/40 flex items-center justify-center text-accent shrink-0">
+                  <Clapperboard size={20} />
+                </div>
+                <div className="min-w-0">
+                  <span className="inline-flex items-center gap-1.5 text-accent text-[11px] tracking-[0.18em] font-medium">
+                    <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
+                    {journeyOfLegacy.eyebrow}
+                  </span>
+                  <p className="text-cream text-sm sm:text-base font-medium mt-1 truncate">
+                    {journeyOfLegacy.title}
+                    <span className="text-cream/45 font-normal">
+                      {" "}
+                      — {journeyOfLegacy.note}
+                    </span>
+                  </p>
+                </div>
+              </div>
+              <span className="inline-flex items-center gap-1 text-accent text-sm shrink-0 group-hover:gap-2 transition-all">
+                Learn more <ArrowRight size={14} />
+              </span>
+            </Link>
+          </Reveal>
+        </section>
+      )}
 
       {/* Episodes */}
       <section className="max-w-8xl mx-auto container-px pb-14">
