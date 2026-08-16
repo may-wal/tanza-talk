@@ -142,7 +142,6 @@ export const influencerDatabase = {
   tech: [
     { name: "Dilraj Singh Rawat (Mr. Indian Hacker)", channel: "Mr Indian Hacker", followers: "52M YouTube", expertise: "Science experiments, tech gadgets, viral content" },
     { name: "Avi Arya", channel: "Ask Avi Arya", followers: "100M+ revenue", expertise: "Web advertising, digital entrepreneurship" },
-    { name: "Piyush Sharma (Tricky Man)", channel: "Tricky Man", followers: "700k+ YouTube", expertise: "Tech tutorials, internship coaching, placements" },
     { name: "Sunny Garg", channel: "Crib", followers: "Startup co-founder", expertise: "Property tech, co-living solutions" },
     { name: "Vipin Yadav", channel: "Vipin Yadav / V.K. CNC", followers: "1.24M", expertise: "Fitness content, CNC engineering education" },
   ],
@@ -631,7 +630,6 @@ export const talentPage = {
     { name: "Avi Arya", role: "Entrepreneur & Digital Marketing Expert", channel: "Ask Avi Arya", expertise: "Web advertising, digital entrepreneurship" },
     { name: "Arun Pandit", role: "Astrologer & Numerologist", reach: "2.5M YouTube", channel: "Astro Arun Pandit", expertise: "Astrology, numerology, vedic sciences" },
     { name: "Mahendra Dogney", role: "Motivational Speaker & Life Coach", reach: "8M+", channel: "MD Motivation", expertise: "Motivational speeches, life coaching" },
-    { name: "Manish Pandey" },
     { name: "Shefali Bagga", role: "TV Anchor, Journalist & YouTuber", reach: "2M Instagram", channel: "Shefali Bagga Official", expertise: "Fashion, travel, lifestyle content" },
     { name: "Shreya Pattar", role: "Beauty YouTuber & Makeup Artist", reach: "750k YouTube", channel: "Shreya Jain", expertise: "Makeup tutorials, Bollywood-inspired beauty" },
     { name: "Sunny Garg", role: "Entrepreneur & Tech Founder", channel: "Crib", expertise: "Co-living solutions, property tech startup" },
@@ -652,7 +650,6 @@ export const talentPage = {
     { name: "Dr. Yogendra Singh Rathore", role: "NLP Expert & Life Coach", reach: "2.3M+ lives touched", channel: "Dr. Yogendra Singh Rathore", expertise: "Neuro-linguistic programming, mental wellness coaching" },
     { name: "Ridhima Arora", role: "Entrepreneur & Food/Wellness Founder", channel: "Namhya Foods", expertise: "Ayurvedic products, health & wellness business" },
     { name: "Col. Shyam Vijay Simha", role: "Military Officer & Transformational Leader", channel: "Simha Speaks", expertise: "Leadership, military insights, strategic management" },
-    { name: "Piyush Sharma", role: "Tech YouTuber & Educator", reach: "700k+ YouTube", channel: "Tricky Man", expertise: "Tech tutorials, internship coaching, placements" },
     { name: "Deven Pandey", role: "Entrepreneur & Educator", reach: "600k+ trained", channel: "Deven U Pandey Channel", expertise: "AI skills, career development, Ira Skills founder" },
     { name: "Manvir Singh Anand", role: "Food Business Expert & Entrepreneur", expertise: "Cloud kitchens, food business, catering expertise" },
     { name: "Abhinay Sharma", role: "Math Educator & YouTuber", reach: "1M+ YouTube", channel: "Abhinay Maths", expertise: "Mathematics education, competitive exam prep" },
