@@ -34,7 +34,7 @@ export default function Talent() {
           </h2>
         </Reveal>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-5">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-5">
           {talentPage.featured.map((s, i) => (
             <Reveal key={s.name} delay={(i % 10) * 0.04}>
               <TiltCard max={7}>

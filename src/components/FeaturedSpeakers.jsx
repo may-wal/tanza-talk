@@ -32,7 +32,7 @@ export default function FeaturedSpeakers() {
         </Link>
       </Reveal>
 
-      <div className="grid lg:grid-cols-[1.3fr_1fr_1fr_1fr] gap-4">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1fr] gap-4">
         <Reveal>
           <TiltCard max={4}>
             <div className="relative rounded-2xl overflow-hidden aspect-[4/5] lg:aspect-auto lg:min-h-[420px] group">

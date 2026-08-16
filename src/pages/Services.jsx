@@ -35,7 +35,7 @@ export default function Services() {
       <PageHeader eyebrow={services.eyebrow} title={services.title} description={services.description} />
 
       <section className="max-w-8xl mx-auto container-px pb-10">
-        <div className="grid sm:grid-cols-2 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.list.map((s, i) => {
             const Icon = icons[s.icon];
             return (

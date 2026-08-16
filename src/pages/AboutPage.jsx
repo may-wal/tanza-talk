@@ -46,7 +46,7 @@ export default function AboutPage() {
         <Reveal>
           <h2 className="font-display text-2xl sm:text-3xl text-cream mb-10">What we believe</h2>
         </Reveal>
-        <div className="grid sm:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {aboutPage.values.map((v, i) => {
             const Icon = valueIcons[v.icon];
             return (

@@ -90,7 +90,7 @@ export default function WhatsNew() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center"
+            className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center"
           >
             {/* Art card */}
             <div>

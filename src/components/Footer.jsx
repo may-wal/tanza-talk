@@ -13,7 +13,7 @@ import Reveal from "./Reveal";
 export default function Footer() {
   return (
     <footer className="max-w-8xl mx-auto container-px pb-10 pt-4">
-      <Reveal className="border-t border-line/10 pt-14 grid md:grid-cols-[1.2fr_1fr_1fr_1fr_1.2fr] gap-10">
+      <Reveal className="border-t border-line/10 pt-14 grid sm:grid-cols-2 lg:grid-cols-[1.2fr_1fr_1fr_1fr_1.2fr] gap-10">
         {/* Brand + tagline + socials */}
         <div>
           <Link
@@ -28,7 +28,9 @@ export default function Footer() {
               />
             ) : (
               <span className="text-cream">
-                {nav.logo.alt ?? "Tanza Talks"}
+                {nav.logo.alt ??
+                
+                 "Tanza Talks"}
               </span>
             )}
           </Link>

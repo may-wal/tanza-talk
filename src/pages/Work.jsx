@@ -60,7 +60,7 @@ export default function Work() {
           {/* Lineup */}
           <div className="p-8 sm:p-10 lg:p-12">
             <h3 className="text-cream font-medium mb-6">Who was on stage</h3>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-5">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
               {ev.lineup.map((p, i) => (
                 <Reveal key={p.name} delay={i * 0.07}>
                   <TiltCard max={6}>

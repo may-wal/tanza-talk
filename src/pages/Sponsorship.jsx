@@ -34,7 +34,7 @@ export default function Sponsorship() {
         <Reveal className="mb-10">
           <h2 className="font-display text-2xl sm:text-3xl text-cream">Ways to partner</h2>
         </Reveal>
-        <div className="grid sm:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {sponsorshipPage.tiers.map((tier, i) => (
             <Reveal key={tier.name} delay={i * 0.1}>
               <TiltCard max={4}>
