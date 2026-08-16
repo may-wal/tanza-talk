@@ -51,48 +51,121 @@ const ytWatch = (id) => `https://www.youtube.com/watch?v=${id}`;
 import arvindAroraImg from "../images/arvind arora.png";
 import jayaKishoriImg from "../images/jaya kishori.png";
 import mahendraDogneyImg from "../images/mahendra dogney.png";
-import pramodMaheshwariImg from "../images/promod maheshwari.png";
+import pramodMaheshwariImg from "../images/pramod maheshwari.png";
 import rajpalYadavImg from "../images/rajpal yadav.png";
 import ridhimaAroraImg from "../images/ridhima.png";
 import rjKartikImg from "../images/rj kartik.png";
 import sonuSharmaImg from "../images/sonu sharma.png";
-import anupSoniImg from "../images/anup-soni-tanza.png";
-import arunPanditImg from "../images/arun-pandit-tanza.png";
+import anupSoniImg from "../images/anup soni.png";
+import arunPanditImg from "../images/arun pandit.png";
 import aviAryaImg from "../images/avi-arya-tanza.png";
-import dineshMohanImg from "../images/dinesh-mohan-tanza.png";
+import dineshMohanImg from "../images/dinesh mohan.png";
 import kamalneetSinghImg from "../images/kamalneet-singh-tanza.png";
 import nitinVijayImg from "../images/nitin-vijya-tanza.png";
-import saurabhBhatnagarImg from "../images/saurabh-bhatnagar-tanza.png";
+import saurabhBhatnagarImg from "../images/Saurabh Bhatnagar.png";
 import shefaliBaggaImg from "../images/shefali-bagga-tanza.png";
 import shreyaPattarImg from "../images/shreya-pattar-tanza.png";
 import sunnyGargImg from "../images/sunny-garg-tanza.png";
 import manishKumarImg from "../images/manish-kr-profile.png";
 import anujKumarImg from "../images/anuj-kumar-profile.png";
+import abhinaySharmaImg from "../images/Abhinay Sharma.png";
+import colShyamVijaySimhaImg from "../images/Col. Shyam Vijay Simha.png";
+import devenPandeyImg from "../images/Deven Pandey.png";
+import drYogerdraSinghRathoreImg from "../images/Dr. Yogendra Singh Rathore.png";
+import manvirSinghAnandImg from "../images/Manvir Singh Anand.png";
+import sherrnavazSamJijinaImg from "../images/Sherrnavaz Sam Jijina.png";
+import dilrajSinghImg from "../images/dilraj singh.png";
+import drAbhinitGuptaImg from "../images/dr abhinit gupta.png";
+import hardikSalvaImg from "../images/hardik salva.png";
+import nehaAgarwalImg from "../images/neha agarwal.png";
+import rahulBhatnagarImg from "../images/rahul bhatnagar.png";
+import rahulKissuImg from "../images/rahul kissu.png";
+import sahilKhanaImg from "../images/sahil khana.png";
+import vipinYadavImg from "../images/vipin yadav.png";
 
 export const personPhotos = {
+  "Abhinay Sharma": abhinaySharmaImg,
+  "Anuj Kumar": anujKumarImg,
+  "Anup Soni": anupSoniImg,
+  "Arun Pandit": arunPanditImg,
   "Arvind Arora": arvindAroraImg,
+  "Avi Arya": aviAryaImg,
+  "Col. Shyam Vijay Simha": colShyamVijaySimhaImg,
+  "Deven Pandey": devenPandeyImg,
+  "Dilraj Singh Rawat": dilrajSinghImg,
+  "Dinesh Mohan": dineshMohanImg,
+  "Dr. Abhinit Gupta": drAbhinitGuptaImg,
+  "Dr. Yogendra Singh Rathore": drYogerdraSinghRathoreImg,
+  "Hardik Savla": hardikSalvaImg,
   "Jaya Kishori": jayaKishoriImg,
+  "Kamalneet Singh": kamalneetSinghImg,
+  "Kissu Rahul": rahulKissuImg,
   "Mahendra Dogney": mahendraDogneyImg,
+  "Manish Kumar": manishKumarImg,
+  "Manvir Singh Anand": manvirSinghAnandImg,
+  "Neha Agrawal": nehaAgarwalImg,
+  "Nitin Vijay": nitinVijayImg,
   "Pramod Maheshwari": pramodMaheshwariImg,
+  "Rahul Bhatnagar": rahulBhatnagarImg,
   "Rajpal Yadav": rajpalYadavImg,
   "Ridhima Arora": ridhimaAroraImg,
   // The episode guest field uses the source video title's spelling
   // ("Riddhima", double d) — mapped to the same file as "Ridhima Arora".
   "Riddhima Arora": ridhimaAroraImg,
   "RJ Kartik": rjKartikImg,
-  "Sonu Sharma": sonuSharmaImg,
-  "Anup Soni": anupSoniImg,
-  "Arun Pandit": arunPanditImg,
-  "Avi Arya": aviAryaImg,
-  "Dinesh Mohan": dineshMohanImg,
-  "Kamalneet Singh": kamalneetSinghImg,
-  "Nitin Vijay": nitinVijayImg,
+  "Sahil Khanna": sahilKhanaImg,
   "Saurabh Bhatnagar": saurabhBhatnagarImg,
   "Shefali Bagga": shefaliBaggaImg,
+  "Sherrnavaz Sam Jijina": sherrnavazSamJijinaImg,
   "Shreya Pattar": shreyaPattarImg,
+  "Sonu Sharma": sonuSharmaImg,
   "Sunny Garg": sunnyGargImg,
-  "Manish Kumar": manishKumarImg,
-  "Anuj Kumar": anujKumarImg,
+  "Vipin Yadav": vipinYadavImg,
+};
+
+// Detailed influencer database with profession, channel, and expertise information
+// for content creation, marketing, and speaker selection purposes
+export const influencerDatabase = {
+  education: [
+    { name: "Arvind Arora", channel: "A2 Motivation", followers: "18M YouTube", expertise: "Chemistry education, competitive exams, educational motivation" },
+    { name: "Nitin Vijay", channel: "Motion Education", followers: "2M+", expertise: "Physics education, IIT/NEET preparation" },
+    { name: "Pramod Maheshwari", channel: "PM Sir", followers: "30+ years", expertise: "Physics education, Career Point founder, Kota coaching pioneer" },
+    { name: "Abhinay Sharma", channel: "Abhinay Maths", followers: "1M+ YouTube", expertise: "Mathematics, competitive exam prep (SSC, Bank PO)" },
+    { name: "Neha Agrawal", channel: "Neha Agarwal Mathematically Inclined", followers: "2M YouTube", expertise: "Mathematics education, IIT JEE preparation, 16+ years teaching" },
+  ],
+  motivation: [
+    { name: "Sonu Sharma", channel: "Sonu Sharma", followers: "30M+", expertise: "Motivation, business coaching, success stories, 5B+ views" },
+    { name: "Mahendra Dogney", channel: "MD Motivation", followers: "1.43M YouTube, 5.8M TikTok", expertise: "Motivational speeches, life coaching, personal development" },
+    { name: "Dr. Yogendra Singh Rathore", channel: "Dr. Yogendra Singh Rathore", followers: "2.3M+ lives touched", expertise: "NLP, mental wellness coaching, personal transformation" },
+    { name: "Col. Shyam Vijay Simha", channel: "Simha Speaks", followers: "24 years military", expertise: "Leadership, strategic management, military insights" },
+  ],
+  tech: [
+    { name: "Dilraj Singh Rawat (Mr. Indian Hacker)", channel: "Mr Indian Hacker", followers: "52M YouTube", expertise: "Science experiments, tech gadgets, viral content" },
+    { name: "Avi Arya", channel: "Ask Avi Arya", followers: "100M+ revenue", expertise: "Web advertising, digital entrepreneurship" },
+    { name: "Piyush Sharma (Tricky Man)", channel: "Tricky Man", followers: "700k+ YouTube", expertise: "Tech tutorials, internship coaching, placements" },
+    { name: "Sunny Garg", channel: "Crib", followers: "Startup co-founder", expertise: "Property tech, co-living solutions" },
+    { name: "Vipin Yadav", channel: "Vipin Yadav / V.K. CNC", followers: "1.24M", expertise: "Fitness content, CNC engineering education" },
+  ],
+  entertainment: [
+    { name: "RJ Kartik", channel: "RJ Kartik", followers: "1M+ followers", expertise: "Radio mimics, humor, motivational storytelling" },
+    { name: "Anup Soni", channel: "TV personality", expertise: "Crime Patrol, CID, acting career" },
+    { name: "Sherrnavaz Sam Jijina", channel: "Sherrnavaz Jijina", followers: "604k Instagram", expertise: "Acting (Mirzapur), modeling, entertainment" },
+    { name: "Rajpal Yadav", channel: "Rajpal Naurang Yadav", expertise: "Bollywood comedy films, entertainment" },
+    { name: "Shefali Bagga", channel: "Shefali Bagga Official", followers: "2M Instagram", expertise: "Fashion, travel, lifestyle content" },
+    { name: "Shreya Pattar", channel: "Shreya Jain", followers: "750k YouTube", expertise: "Makeup tutorials, Bollywood-inspired beauty" },
+  ],
+  spiritual: [
+    { name: "Jaya Kishori", channel: "Jaya Kishori", followers: "11M Instagram, 3.2M YouTube", expertise: "Bhagavad Gita, Ramayana, spiritual wisdom" },
+    { name: "Arun Pandit", channel: "Astro Arun Pandit", followers: "2.5M YouTube", expertise: "Astrology, numerology, vedic sciences" },
+  ],
+  business: [
+    { name: "Ridhima Arora", channel: "Namhya Foods", expertise: "Ayurvedic products, health & wellness business" },
+    { name: "Dr. Abhinit Gupta", channel: "Dr Abhinit Gupta", expertise: "Cosmetology, anti-aging skincare, health" },
+    { name: "Manvir Singh Anand", expertise: "Cloud kitchens, food business, catering" },
+    { name: "Rahul Bhatnagar", channel: "Rahul Bhatnagar", followers: "203k YouTube", expertise: "Sales coaching, success mentoring" },
+    { name: "Sahil Khanna", channel: "Intellectual Indies", followers: "1M+ (6 channels)", expertise: "Business education, entrepreneurship, digital marketing" },
+    { name: "Deven Pandey", channel: "Deven U Pandey Channel", followers: "600k+ trained", expertise: "AI skills, career development, Ira Skills founder" },
+  ],
 };
 
 export const nav = {
@@ -551,39 +624,39 @@ export const talentPage = {
     "Tanza Talks has connected over 100 influencers, public speakers and entrepreneurs throughout India. These are the voices we've worked with and can bring to your campaign, campus or stage.",
   featuredTitle: "Guests & voices we've featured",
   featured: [
-    { name: "Jaya Kishori", role: "Motivational Speaker" },
-    { name: "Anup Soni" },
-    { name: "Arvind Arora", role: "Educator & Creator", reach: "24M+" },
-    { name: "Nitin Vijay" },
-    { name: "Avi Arya" },
-    { name: "Arun Pandit", role: "Astro Numerology Expert" },
-    { name: "Mahendra Dogney", role: "Creator", reach: "8M+" },
+    { name: "Jaya Kishori", role: "Spiritual Leader & Motivational Speaker", reach: "11M+ Instagram, 3.2M YouTube", channel: "Jaya Kishori", expertise: "Bhagavad Gita, Ramayana, spiritual wisdom" },
+    { name: "Anup Soni", role: "Actor & TV Anchor", channel: "TV personality", expertise: "Crime Patrol, CID, acting" },
+    { name: "Arvind Arora", role: "Chemistry Teacher & Educator", reach: "24M+", channel: "A2 Motivation", expertise: "Educational motivation videos, chemistry teaching" },
+    { name: "Nitin Vijay", role: "Physics Teacher & Entrepreneur", channel: "Motion Education", expertise: "IIT/NEET exam preparation, physics education" },
+    { name: "Avi Arya", role: "Entrepreneur & Digital Marketing Expert", channel: "Ask Avi Arya", expertise: "Web advertising, digital entrepreneurship" },
+    { name: "Arun Pandit", role: "Astrologer & Numerologist", reach: "2.5M YouTube", channel: "Astro Arun Pandit", expertise: "Astrology, numerology, vedic sciences" },
+    { name: "Mahendra Dogney", role: "Motivational Speaker & Life Coach", reach: "8M+", channel: "MD Motivation", expertise: "Motivational speeches, life coaching" },
     { name: "Manish Pandey" },
-    { name: "Shefali Bagga" },
-    { name: "Shreya Pattar" },
-    { name: "Sunny Garg" },
-    { name: "Kamalneet Singh" },
-    { name: "Vipin Yadav" },
+    { name: "Shefali Bagga", role: "TV Anchor, Journalist & YouTuber", reach: "2M Instagram", channel: "Shefali Bagga Official", expertise: "Fashion, travel, lifestyle content" },
+    { name: "Shreya Pattar", role: "Beauty YouTuber & Makeup Artist", reach: "750k YouTube", channel: "Shreya Jain", expertise: "Makeup tutorials, Bollywood-inspired beauty" },
+    { name: "Sunny Garg", role: "Entrepreneur & Tech Founder", channel: "Crib", expertise: "Co-living solutions, property tech startup" },
+    { name: "Kamalneet Singh", role: "TEDx Speaker & Chef", expertise: "Culinary expertise, motivational speaking" },
+    { name: "Vipin Yadav", role: "Fitness YouTuber & Tech Educator", reach: "1.24M", channel: "Vipin Yadav / V.K. CNC", expertise: "Fitness content, CNC engineering education" },
     { name: "Saurabh Bhatnagar" },
     { name: "Dinesh Mohan" },
-    { name: "Hardik Savla" },
-    { name: "Neha Agrawal" },
-    { name: "Rajpal Yadav", role: "Actor" },
-    { name: "Sonu Sharma", role: "Motivational Speaker" },
-    { name: "Dilraj Singh Rawat" },
-    { name: "Pramod Maheshwari", role: "Founder, Career Point Kota" },
-    { name: "Dr. Abhinit Gupta", role: "Physician & Surgeon" },
-    { name: "Rahul Bhatnagar" },
-    { name: "RJ Kartik", role: "Radio Jockey & Creator", reach: "10M+" },
-    { name: "Sherrnavaz Sam Jijina" },
-    { name: "Dr. Yogendra Singh Rathore" },
-    { name: "Ridhima Arora", role: "Founder, Namhya Foods" },
-    { name: "Col. Shyam Vijay Simha" },
-    { name: "Piyush Sharma" },
-    { name: "Deven Pandey" },
-    { name: "Manvir Singh Anand" },
-    { name: "Abhinay Sharma" },
-    { name: "Sahil Khanna" },
+    { name: "Hardik Savla", reach: "69k Instagram", expertise: "Food business" },
+    { name: "Neha Agrawal", role: "Math Educator & IIT JEE Teacher", reach: "2M YouTube", channel: "Neha Agarwal Mathematically Inclined", expertise: "Mathematics education, IIT JEE preparation" },
+    { name: "Rajpal Yadav", role: "Actor & Comedian", reach: "YouTube active", channel: "Rajpal Naurang Yadav", expertise: "Bollywood comedy films, entertainment" },
+    { name: "Sonu Sharma", role: "Motivational Speaker & Entrepreneur", reach: "30M+ followers", channel: "Sonu Sharma", expertise: "Motivation, business coaching, success stories" },
+    { name: "Dilraj Singh Rawat", role: "Tech YouTuber", reach: "52M YouTube", channel: "Mr Indian Hacker", expertise: "Science experiments, tech gadgets, viral content" },
+    { name: "Pramod Maheshwari", role: "IIT Grad, Educator & Entrepreneur", channel: "PM Sir", expertise: "Physics education, Career Point founder, Kota coaching pioneer" },
+    { name: "Dr. Abhinit Gupta", role: "Doctor (MBBS) & Entrepreneur", channel: "Dr Abhinit Gupta", expertise: "Cosmetology, anti-aging skincare, health content" },
+    { name: "Rahul Bhatnagar", role: "Digital Entrepreneur & Sales Mentor", reach: "203k YouTube", channel: "Rahul Bhatnagar", expertise: "Sales coaching, success mentoring, entrepreneurship" },
+    { name: "RJ Kartik", role: "Radio Jockey & Motivational Storyteller", reach: "10M+", channel: "RJ Kartik", expertise: "Radio mimics, humor, motivational storytelling" },
+    { name: "Sherrnavaz Sam Jijina", role: "Actress & Model", reach: "604k Instagram", channel: "Sherrnavaz Jijina", expertise: "Acting (Mirzapur), modeling, entertainment" },
+    { name: "Dr. Yogendra Singh Rathore", role: "NLP Expert & Life Coach", reach: "2.3M+ lives touched", channel: "Dr. Yogendra Singh Rathore", expertise: "Neuro-linguistic programming, mental wellness coaching" },
+    { name: "Ridhima Arora", role: "Entrepreneur & Food/Wellness Founder", channel: "Namhya Foods", expertise: "Ayurvedic products, health & wellness business" },
+    { name: "Col. Shyam Vijay Simha", role: "Military Officer & Transformational Leader", channel: "Simha Speaks", expertise: "Leadership, military insights, strategic management" },
+    { name: "Piyush Sharma", role: "Tech YouTuber & Educator", reach: "700k+ YouTube", channel: "Tricky Man", expertise: "Tech tutorials, internship coaching, placements" },
+    { name: "Deven Pandey", role: "Entrepreneur & Educator", reach: "600k+ trained", channel: "Deven U Pandey Channel", expertise: "AI skills, career development, Ira Skills founder" },
+    { name: "Manvir Singh Anand", role: "Food Business Expert & Entrepreneur", expertise: "Cloud kitchens, food business, catering expertise" },
+    { name: "Abhinay Sharma", role: "Math Educator & YouTuber", reach: "1M+ YouTube", channel: "Abhinay Maths", expertise: "Mathematics education, competitive exam prep" },
+    { name: "Sahil Khanna", role: "Digital Marketer & Entrepreneur", reach: "1M+ (6 channels)", channel: "Intellectual Indies", expertise: "Business education, entrepreneurship, digital marketing" },
     { name: "Kissu Rahul" },
   ],
 };
