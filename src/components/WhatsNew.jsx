@@ -118,7 +118,7 @@ export default function WhatsNew() {
               {/* Stats row — omitted entirely when a slide has no figures,
                   rather than rendering an empty strip. */}
               {item.stats && (
-                <div className="flex gap-10 mt-8">
+                <div className="flex flex-wrap gap-x-8 sm:gap-x-10 gap-y-4 mt-7">
                   {item.stats.map((s) => (
                     <div key={s.label}>
                       <div className="font-display text-2xl text-accent">
@@ -130,8 +130,40 @@ export default function WhatsNew() {
                 </div>
               )}
 
+              {/* Host credit — a single line, not a card. */}
+              {item.host && (
+                <p className="text-sm text-cream/60 mt-6">
+                  <span className="text-cream">{item.host.name}</span>
+                  <span className="text-cream/40"> — {item.host.role}</span>
+                </p>
+              )}
+
+              {/* Location line-up as compact pills, so six names read at a
+                  glance without turning into a list section. */}
+              {item.institutions && (
+                <div className="mt-5">
+                  {item.institutionsLabel && (
+                    <span className="text-[10px] tracking-[0.18em] uppercase text-cream/40">
+                      {item.institutionsLabel}
+                    </span>
+                  )}
+                  <div className="flex flex-wrap gap-2 mt-2.5">
+                    {item.institutions.map((name) => (
+                      <span
+                        key={name}
+                        className="text-[11px] text-cream/65 border border-line/20 rounded-full px-3 py-1"
+                      >
+                        {name}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              )}
+
               {item.note && (
-                <p className="text-cream/40 text-sm mt-8">{item.note}</p>
+                <p className="text-cream/40 text-sm mt-6 leading-relaxed">
+                  {item.note}
+                </p>
               )}
 
               <div className="flex flex-wrap gap-4 mt-9">

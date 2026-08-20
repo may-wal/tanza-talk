@@ -48,8 +48,9 @@ const ytWatch = (id) => `https://www.youtube.com/watch?v=${id}`;
 // — so adding a new photo here is the only step needed to make it appear
 // everywhere that person is listed.
 // ---------------------------------------------------------------------------
-import arvindAroraImg from "../images/arvind arora.png";
 import jayaKishoriImg from "../images/jaya kishori.png";
+import sadhguruImg from "../images/sad guru.png";
+import kailashKherImg from "../images/kailash kher.png";
 import mahendraDogneyImg from "../images/mahendra dogney.png";
 import pramodMaheshwariImg from "../images/pramod maheshwari.png";
 import rajpalYadavImg from "../images/rajpal yadav.png";
@@ -88,7 +89,6 @@ export const personPhotos = {
   "Anuj Kumar": anujKumarImg,
   "Anup Soni": anupSoniImg,
   "Arun Pandit": arunPanditImg,
-  "Arvind Arora": arvindAroraImg,
   "Avi Arya": aviAryaImg,
   "Col. Shyam Vijay Simha": colShyamVijaySimhaImg,
   "Deven Pandey": devenPandeyImg,
@@ -98,6 +98,7 @@ export const personPhotos = {
   "Dr. Yogendra Singh Rathore": drYogerdraSinghRathoreImg,
   "Hardik Savla": hardikSalvaImg,
   "Jaya Kishori": jayaKishoriImg,
+  "Kailash Kher": kailashKherImg,
   "Kamalneet Singh": kamalneetSinghImg,
   "Kissu Rahul": rahulKissuImg,
   "Mahendra Dogney": mahendraDogneyImg,
@@ -113,6 +114,7 @@ export const personPhotos = {
   // ("Riddhima", double d) — mapped to the same file as "Ridhima Arora".
   "Riddhima Arora": ridhimaAroraImg,
   "RJ Kartik": rjKartikImg,
+  "Sadhguru": sadhguruImg,
   "Sahil Khanna": sahilKhanaImg,
   "Saurabh Bhatnagar": saurabhBhatnagarImg,
   "Shefali Bagga": shefaliBaggaImg,
@@ -127,7 +129,6 @@ export const personPhotos = {
 // for content creation, marketing, and speaker selection purposes
 export const influencerDatabase = {
   education: [
-    { name: "Arvind Arora", channel: "A2 Motivation", followers: "18M YouTube", expertise: "Chemistry education, competitive exams, educational motivation" },
     { name: "Nitin Vijay", channel: "Motion Education", followers: "2M+", expertise: "Physics education, IIT/NEET preparation" },
     { name: "Pramod Maheshwari", channel: "PM Sir", followers: "30+ years", expertise: "Physics education, Career Point founder, Kota coaching pioneer" },
     { name: "Abhinay Sharma", channel: "Abhinay Maths", followers: "1M+ YouTube", expertise: "Mathematics, competitive exam prep (SSC, Bank PO)" },
@@ -146,6 +147,7 @@ export const influencerDatabase = {
     { name: "Vipin Yadav", channel: "Vipin Yadav / V.K. CNC", followers: "1.24M", expertise: "Fitness content, CNC engineering education" },
   ],
   entertainment: [
+    { name: "Kailash Kher", expertise: "Sufi and folk-rock playback singing, founder of the band Kailasa" },
     { name: "RJ Kartik", channel: "RJ Kartik", followers: "1M+ followers", expertise: "Radio mimics, humor, motivational storytelling" },
     { name: "Anup Soni", channel: "TV personality", expertise: "Crime Patrol, CID, acting career" },
     { name: "Sherrnavaz Sam Jijina", channel: "Sherrnavaz Jijina", followers: "604k Instagram", expertise: "Acting (Mirzapur), modeling, entertainment" },
@@ -154,6 +156,7 @@ export const influencerDatabase = {
     { name: "Shreya Pattar", channel: "Shreya Jain", followers: "750k YouTube", expertise: "Makeup tutorials, Bollywood-inspired beauty" },
   ],
   spiritual: [
+    { name: "Sadhguru", expertise: "Yoga, spirituality, inner engineering; founder of Isha Foundation" },
     { name: "Jaya Kishori", channel: "Jaya Kishori", followers: "11M Instagram, 3.2M YouTube", expertise: "Bhagavad Gita, Ramayana, spiritual wisdom" },
     { name: "Arun Pandit", channel: "Astro Arun Pandit", followers: "2.5M YouTube", expertise: "Astrology, numerology, vedic sciences" },
   ],
@@ -310,12 +313,16 @@ export const clientLogos = {
 // card, rendered as a two-column feature panel: typographic art card on the
 // left, copy + CTA on the right.
 //
-// Only one real fact is asserted here — that Journey of Legacy is coming to
-// JioHotstar — so that's all the card claims. No episode/city/college count
-// is given, because none has been published; don't add invented figures
-// back in. There's no real JioHotstar URL yet either (the show hasn't
-// launched), so the CTA points at the contact form instead of a fabricated
-// streaming link.
+// SOURCE for the Journey of Legacy card: the series' own sponsorship
+// prospectus deck (2026). Only the production facts are kept here — six
+// completed episodes, 25–30 minutes each, the six institutions, and the
+// host. The deck's audience numbers are deliberately NOT on this card:
+// JioHotstar's 500M+ user base describes the platform, not this show, and
+// the per-episode reach figures are projections for a series that hasn't
+// streamed yet. Don't promote either into a stat here.
+//
+// There's no real JioHotstar URL yet (the show hasn't launched), so the CTA
+// points at the contact form rather than a fabricated streaming link.
 // ---------------------------------------------------------------------------
 export const whatsNew = {
   eyebrow: "WHAT'S NEW",
@@ -325,11 +332,27 @@ export const whatsNew = {
       eyebrow: "COMING SOON",
       title: "Journey of Legacy",
       description:
-        "Tanza Talks' original documentary series — the people, campuses and stories that shape India's institutions.",
+        "A six-part docutainment series filmed across India's leading engineering and medical institutions — following real students from their first day of fear to the moment they give back.",
       art: { overline: "JOURNEY OF", word: "LEGACY", icon: "clapperboard" },
-      note: "Streaming soon on JioHotstar.",
+      stats: [
+        { value: "06", label: "Episodes, fully shot" },
+        { value: "25–30", label: "Minutes each" },
+        { value: "06", label: "Institutions" },
+      ],
+      host: { name: "Pooja Gor", role: "Narrator & on-camera host" },
+      // All six are shot and complete — this is a line-up, not a wishlist.
+      institutionsLabel: "Filmed at",
+      institutions: [
+        "LNCT, Bhopal",
+        "Quantum University, Roorkee",
+        "Bennett University, Greater Noida",
+        "DIT University, Dehradun",
+        "Sage University, Indore",
+        "VGU, Jaipur",
+      ],
+      note: "Streaming soon on JioHotstar. All six episodes are complete and available for sponsor review.",
       upcoming: true,
-      primaryCta: { label: "Get Notified At Launch", to: "/contact" },
+      primaryCta: { label: "Sponsor The Series", to: "/contact" },
     },
   ],
 };
@@ -503,11 +526,14 @@ export const showsPage = {
   // site itself lists for them.
   pastGuestsTitle: "Past guests",
   pastGuests: [
+    // Sadhguru is listed first because he's a verified past guest — the
+    // "The Truth About Life" episode in `rawEpisodes` above is his.
+    { name: "Sadhguru", role: "Founder, Isha Foundation" },
+    { name: "Jaya Kishori", role: "Motivational Speaker" },
+    { name: "Rajpal Yadav", role: "Actor" },
     { name: "Sonu Sharma", role: "Motivational Speaker" },
     { name: "Dr. Abhinit Gupta", role: "Physician & Surgeon" },
     { name: "Pramod Maheshwari", role: "Founder, Career Point Kota" },
-    { name: "Jaya Kishori", role: "Motivational Speaker" },
-    { name: "Rajpal Yadav", role: "Actor" },
     { name: "Ridhima Arora", role: "Founder, Namhya Foods" },
   ],
 };
@@ -575,10 +601,16 @@ export const aboutPage = {
 // tanzatalks.com/influencer, name-only, because the site publishes nothing
 // else about them and inventing roles or reach would be fabrication.
 //
-// Follower counts below are ONLY the three the site actually states
-// (Event page: Arvind Arora 24M+, RJ Kartik 10M+, Mahendra Dogney 8M+).
-// The old file carried invented figures for everyone — including a much
-// too-low 3M+ for Arvind Arora. Those are gone.
+// This rail is the site's headline four: Sadhguru in the large featured
+// card, then Jaya Kishori, Rajpal Yadav and Kailash Kher beside it. They're
+// the most widely recognised names on the roster, which is the whole job of
+// this section — the full list lives on /talent.
+//
+// Roles are plain descriptions of who each person is. No follower counts
+// are set here: the source site publishes none for these four, and the old
+// file's invented figures were removed for exactly that reason. `reach` is
+// optional and the card omits the pill when it's absent — leave it absent
+// rather than estimating.
 // SOURCE: tanzatalks.com/influencer, /event, and homepage "OUR PAST GUEST"
 // ---------------------------------------------------------------------------
 export const speakers = {
@@ -586,18 +618,17 @@ export const speakers = {
   viewAll: "View Full Roster",
   featured: {
     badge: "FEATURED",
-    name: "Arvind Arora",
-    role: "Educator & Creator",
-    reach: "24M+",
+    name: "Sadhguru",
+    role: "Founder, Isha Foundation",
     // The platform's own line, not a quote attributed to any individual.
     quote:
       "True motivation is not something that we only talk about — it is something to understand and feel.",
     cta: "Work With Us",
   },
   list: [
-    { name: "RJ Kartik", role: "Radio Jockey & Creator", reach: "10M+" },
-    { name: "Mahendra Dogney", role: "Creator", reach: "8M+" },
-    { name: "Jaya Kishori", role: "Motivational Speaker" },
+    { name: "Jaya Kishori", role: "Spiritual Leader & Motivational Speaker" },
+    { name: "Rajpal Yadav", role: "Actor & Comedian" },
+    { name: "Kailash Kher", role: "Singer & Composer" },
   ],
 };
 
@@ -623,9 +654,12 @@ export const talentPage = {
     "Tanza Talks has connected over 100 influencers, public speakers and entrepreneurs throughout India. These are the voices we've worked with and can bring to your campaign, campus or stage.",
   featuredTitle: "Guests & voices we've featured",
   featured: [
+    // The four headline names lead the grid — same four as the Home rail.
     { name: "Jaya Kishori", role: "Spiritual Leader & Motivational Speaker", reach: "11M+ Instagram, 3.2M YouTube", channel: "Jaya Kishori", expertise: "Bhagavad Gita, Ramayana, spiritual wisdom" },
+    { name: "Sadhguru", role: "Founder, Isha Foundation", expertise: "Yoga, spirituality, inner engineering" },
+    { name: "Rajpal Yadav", role: "Actor & Comedian", channel: "Rajpal Naurang Yadav", expertise: "Bollywood comedy films, entertainment" },
+    { name: "Kailash Kher", role: "Singer & Composer", expertise: "Sufi and folk-rock playback singing, founder of Kailasa" },
     { name: "Anup Soni", role: "Actor & TV Anchor", channel: "TV personality", expertise: "Crime Patrol, CID, acting" },
-    { name: "Arvind Arora", role: "Chemistry Teacher & Educator", reach: "24M+", channel: "A2 Motivation", expertise: "Educational motivation videos, chemistry teaching" },
     { name: "Nitin Vijay", role: "Physics Teacher & Entrepreneur", channel: "Motion Education", expertise: "IIT/NEET exam preparation, physics education" },
     { name: "Avi Arya", role: "Entrepreneur & Digital Marketing Expert", channel: "Ask Avi Arya", expertise: "Web advertising, digital entrepreneurship" },
     { name: "Arun Pandit", role: "Astrologer & Numerologist", reach: "2.5M YouTube", channel: "Astro Arun Pandit", expertise: "Astrology, numerology, vedic sciences" },
@@ -639,7 +673,6 @@ export const talentPage = {
     { name: "Dinesh Mohan" },
     { name: "Hardik Savla", reach: "69k Instagram", expertise: "Food business" },
     { name: "Neha Agrawal", role: "Math Educator & IIT JEE Teacher", reach: "2M YouTube", channel: "Neha Agarwal Mathematically Inclined", expertise: "Mathematics education, IIT JEE preparation" },
-    { name: "Rajpal Yadav", role: "Actor & Comedian", reach: "YouTube active", channel: "Rajpal Naurang Yadav", expertise: "Bollywood comedy films, entertainment" },
     { name: "Sonu Sharma", role: "Motivational Speaker & Entrepreneur", reach: "30M+ followers", channel: "Sonu Sharma", expertise: "Motivation, business coaching, success stories" },
     { name: "Dilraj Singh Rawat", role: "Tech YouTuber", reach: "52M YouTube", channel: "Mr Indian Hacker", expertise: "Science experiments, tech gadgets, viral content" },
     { name: "Pramod Maheshwari", role: "IIT Grad, Educator & Entrepreneur", channel: "PM Sir", expertise: "Physics education, Career Point founder, Kota coaching pioneer" },
